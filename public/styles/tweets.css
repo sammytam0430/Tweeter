@@ -1,0 +1,70 @@
+.tweet {
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid #999;
+  border-radius: 5px;
+  position: relative;
+}
+
+header {
+  height: 80px;
+  background-color: #eee;
+}
+
+.hover {
+  background-color: #bbb;
+}
+
+img {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 10px 10px;
+}
+
+h2 {
+  border: 0;
+  color: #777;
+  float: left;
+  width: 40%;
+  margin: 10px 0;
+}
+
+span.handle {
+  color: #999;
+  right: 0;
+  font-size: 80%;
+  float: right;
+  width: 25%;
+  margin: 10px 10px;
+  text-align: right;
+  line-height: 40px;
+}
+
+section.text {
+  height: auto;
+  padding: 10px 10px;
+  font-size: 150%;
+  line-height: 150%;
+}
+
+
+footer {
+  border-top: 1px solid #eee;
+  height: 40px;
+  padding: 10px 10px;
+}
+
+footer p {
+  text-align: left;
+  float: left;
+  margin: 0 0;
+  width: 60%;
+}
+
+.widget {
+  float: right;
+  width: 20%;
+  height: 20px;
+  background-color: #eee;
+}
