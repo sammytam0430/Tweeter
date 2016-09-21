@@ -34,3 +34,7 @@ span.counter {
   float: right;
   margin: 10px 0;
 }
+
+.red {
+  color: red;
+}
