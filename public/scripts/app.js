@@ -34,12 +34,27 @@ $(document).ready(function(){
 
   $('.new-tweet').find('form').on('submit', function(Event) {
     Event.preventDefault();
-    var url = this.action + '?' + $(this).serialize();
-    $.ajax({
-      url: url,
-      method: 'POST',
-      success: function (tweet) {}
-    });
+    var content = $(this).find('textarea').val();
+    switch (true) {
+      case (content.length > 140):
+        $(this).find('input').addClass('disabled').disable;
+        $(this).find('.counter').html('Your tweet is too long!');
+        break;
+      case (content === ''):
+        $(this).find('input').addClass('disabled').disable;
+        $(this).find('.counter').addClass('red').html('Your tweet is empty!');
+        break;
+      default:
+        $.ajax({
+          url: $(this).attr('action'),
+          method: $(this).attr('method'),
+          data: $(this).serialize(),
+          dataType: 'json',
+          success: function (tweet) {
+            $('#tweet-container').prepend(createTweetElement(tweet));
+          }
+        });
+    }
   });
 
   (function loadTweets() {

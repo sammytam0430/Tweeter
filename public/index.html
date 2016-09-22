@@ -30,14 +30,16 @@
     </nav>
 
     <!-- Page-specific (main) content here -->
-    <main class="container" id="tweet-container">
+    <main class="container">
       <section class="new-tweet">
         <h2 id="compose">Compose Tweet</h2>
-        <form>
+        <form action="/tweets" method="POST">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
-          <input id='submit-button' type="submit" value="Tweet">
+          <input id="submit-button" type="submit" value="Tweet">
           <span class="counter">140</span>
         </form>
+      </section>
+      <section class="container" id="tweet-container">
       </section>
 
     </main>

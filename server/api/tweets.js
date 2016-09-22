@@ -17,21 +17,24 @@ module.exports = function(db) {
   });
 
   tweets.post("/", function(req, res) {
-    // console.log("New Tweet, Body:", req.body);
-    if (!req.body.text) {
+    // console.log("New Tweet, Body:", req.query);
+    if (!req.query.text) {
       res.status(400);
       return res.send("{'error': 'invalid request'}\n");
     }
 
-    const user = req.body.user ? req.body.user : User.generateRandomUser();
+    const user = req.query.user ? req.query.user : User.generateRandomUser();
     const tweet = {
       user: user,
       content: {
-        text: req.body.text
+        text: req.query.text
       },
       created_at: Date.now()
     };
     db.collection("tweets").insertOne(tweet, (err, result) => {
+      if (err) {
+        console.error(err);
+      }
       res.json(result);
     });
   });

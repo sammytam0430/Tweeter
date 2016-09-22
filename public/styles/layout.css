@@ -30,5 +30,6 @@ body {
    margin: 80px auto;
    position: relative;
    width: 450px;
-   height: 100em;
+   height: auto;
+   padding: 20px 0;
  }
