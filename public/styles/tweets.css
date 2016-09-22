@@ -9,6 +9,8 @@
 header {
   height: 80px;
   background-color: #eee;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .hover {
