@@ -16,26 +16,28 @@ module.exports = function(db) {
     });
   });
 
+  tweets.get('/test', function(req, res) {
+    res.send('hello world');
+  });
+
   tweets.post("/", function(req, res) {
-    // console.log("New Tweet, Body:", req.query);
-    if (!req.query.text) {
+    console.log("New Tweet, Body:", req.body);
+    if (!req.body.text) {
       res.status(400);
       return res.send("{'error': 'invalid request'}\n");
     }
 
-    const user = req.query.user ? req.query.user : User.generateRandomUser();
+    const user = req.body.user ? req.body.user : User.generateRandomUser();
     const tweet = {
       user: user,
       content: {
-        text: req.query.text
+        text: req.body.text
       },
       created_at: Date.now()
     };
     db.collection("tweets").insertOne(tweet, (err, result) => {
-      if (err) {
-        console.error(err);
-      }
-      res.json(result);
+      console.log(result.ops[0]);
+      res.json(result.ops[0]);
     });
   });
 
