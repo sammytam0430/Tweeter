@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-  const $textarea = $(".new-tweet").find("textarea");
-  const $counter = $(".new-tweet").find(".counter");
-  const $input = $(".new-tweet").find('#submit-button')
+  const $textarea = $("#new-tweet").find("textarea");
+  const $counter = $("#new-tweet").find(".counter");
+  const $input = $("#new-tweet").find('#submit-button')
 
   $textarea.on("input", function () {
     const tweetLength = $(this).val().length

@@ -13,6 +13,8 @@
   float: left;
   height: 80px;
   width: 80px;
+  margin: 0;
+
 }
 
 #nav-bar .header {
@@ -20,4 +22,26 @@
   font-size: 200%;
   line-height: 80px;
   margin-left: 10px;
+}
+
+#composeButton {
+  font-size: 130%;
+  text-align: center;
+  float: right;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 100px;
+  height: 60px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.color {
+  color: #00a087;
+  background-color: #eff;
+}
+
+.colorHover {
+  color: #000;
+  background-color: #fff;
 }

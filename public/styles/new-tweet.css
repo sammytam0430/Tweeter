@@ -1,7 +1,7 @@
-section.new-tweet {
+#new-tweet {
   width: 90%;
   background-color: #eee;
-  margin: 10px auto;
+  margin: 0 auto;
   border: 1px solid #999;
   border-radius: 5px;
   padding: 0 10px;

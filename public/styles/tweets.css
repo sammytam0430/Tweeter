@@ -14,7 +14,7 @@ header {
 }
 
 .hover {
-  background-color: #bbb;
+  background-color: #000;
 }
 
 img {
@@ -64,9 +64,10 @@ footer p {
   width: 60%;
 }
 
-.widget {
+span img {
+  margin: 0;
+  top: 0;
   float: right;
-  width: 20%;
-  height: 20px;
-  background-color: #eee;
+  width: 30px;
+  height: 30px;
 }
