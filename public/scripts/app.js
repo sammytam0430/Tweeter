@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     let today = Date.now();
     let daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
-    let $tweetFooter = $("<footer>").html(daysAgo + ' days ago');
+    let $tweetFooter = $("<footer>").html(calculateSince(tweet));
     let $footerIcons = $("<span>").appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
@@ -69,5 +69,29 @@ $(document).ready(function(){
       $('textarea').focus();
     });
   });
+
+  function calculateSince(tweet) {
+    var tTime=new Date(tweet.created_at);
+    var cTime=new Date()-240000;
+    var sinceSec=Math.round((cTime-tTime)/1000);
+    var sinceMin=Math.round((cTime-tTime)/60000);
+    var sinceHr=Math.round(sinceMin/60);
+    var sinceDay=Math.round(sinceMin/1440);
+    var since;
+    if (sinceSec<60) {
+      since='less than a minute ago';
+    } else if (sinceMin<45) {
+      since=sinceMin+' minutes ago';
+    } else if(sinceMin>44&&sinceMin<60) {
+      since='about 1 hour ago';
+    } else if(sinceMin<1440) {
+      since='about '+sinceHr+' hours ago';
+    } else if(sinceMin>1439&&sinceMin<2880) {
+      since='1 day ago';
+    } else {
+    since=sinceDay+' days ago';
+    }
+    return since;
+  };
 
 });

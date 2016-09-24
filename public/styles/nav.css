@@ -24,16 +24,24 @@
   margin-left: 10px;
 }
 
+#composeIcon {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin:  10px 0;
+}
+
 #composeButton {
-  font-size: 130%;
+  font-size: 120%;
   text-align: center;
   float: right;
   border: 2px solid black;
   border-radius: 5px;
-  width: 100px;
+  width: 120px;
   height: 60px;
   margin: 10px;
   padding: 10px;
+  line-height: 40px
 }
 
 .color {
