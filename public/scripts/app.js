@@ -10,13 +10,13 @@ $(document).ready(function(){
     let $tweet = $("<article>").addClass("tweet");
 
     let $tweetHeader = $("<header>").html('<img src="' + tweet.user.avatars.small + '"><h2>' + tweet.user.name + '</h2>');
-    let $tweetHandle = $("<span>").addClass("handle").html(tweet.user.handle).appendTo($tweetHeader);
+    let $tweetHandle = $("<span>").addClass("handle").text(tweet.user.handle).appendTo($tweetHeader);
 
-    let $tweetContent = $("<section>").addClass("text").html(tweet.content.text);
+    let $tweetContent = $("<section>").addClass("text").text(tweet.content.text);
 
     let today = Date.now();
     let daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
-    let $tweetFooter = $("<footer>").html(calculateSince(tweet));
+    let $tweetFooter = $("<footer>").text(calculateSince(tweet));
     let $footerIcons = $("<span>").appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
@@ -36,10 +36,10 @@ $(document).ready(function(){
     let content = $(this).find('textarea').val();
     if (content.length > 140) {
       $(this).find('input').addClass('disabled').disable;
-      $(this).find('.counter').html('Your tweet is too long!');
+      $(this).find('.counter').text('Your tweet is too long!');
     } else if (content === '') {
       $(this).find('input').addClass('disabled').disable;
-      $(this).find('.counter').addClass('red').html('Your tweet is empty!');
+      $(this).find('.counter').addClass('red').text('Your tweet is empty!');
     } else {
       $.ajax({
         url: $(this).attr('action'),
