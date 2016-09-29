@@ -38,10 +38,10 @@ $(document).ready(function(){
     let content = $this.find('textarea').val();
     if (content.length > 140) {
       $counter.text('Your tweet is too long!');
-      $input.addClass('disabled');
+      $input.addClass('red');
     } else if (content === '' || content.match(/^\s+$/)) {
       $counter.addClass('red').text('Your tweet is empty!');
-      $input.addClass('disabled');
+      $input.addClass('red');
     } else {
       $.ajax({
         url: $this.attr('action'),
@@ -53,6 +53,7 @@ $(document).ready(function(){
           $("#new-tweet").find(".counter").html('140');
           $('#tweet-container').prepend(createTweetElement(tweet));
         }
+        error: console.error(err)
       });
     }
   });
@@ -62,6 +63,7 @@ $(document).ready(function(){
       url: '/tweets',
       method: 'GET',
       success: renderTweets
+      error: console.error(err)
     });
   }());
 
@@ -73,25 +75,25 @@ $(document).ready(function(){
   });
 
   function calculateSince(tweet) {
-    var tTime=new Date(tweet.created_at);
-    var cTime=new Date()-240000;
-    var sinceSec=Math.round((cTime-tTime)/1000);
-    var sinceMin=Math.round((cTime-tTime)/60000);
-    var sinceHr=Math.round(sinceMin/60);
-    var sinceDay=Math.round(sinceMin/1440);
+    var tTime = new Date(tweet.created_at);
+    var cTime = new Date() - 240000;
+    var sinceSec = Math.round((cTime - tTime) / 1000);
+    var sinceMin = Math.round((cTime - tTime) / 60000);
+    var sinceHr = Math.round(sinceMin / 60);
+    var sinceDay = Math.round(sinceMin / 24 * 60);
     var since;
-    if (sinceSec<60) {
+    if (sinceSec < 60) {
       since='less than a minute ago';
-    } else if (sinceMin<45) {
+    } else if (sinceMin < 45) {
       since=sinceMin+' minutes ago';
-    } else if(sinceMin>44&&sinceMin<60) {
+    } else if(sinceMin < 60) {
       since='about 1 hour ago';
-    } else if(sinceMin<1440) {
+    } else if(sinceMin < 24 * 60) {
       since='about '+sinceHr+' hours ago';
-    } else if(sinceMin>1439&&sinceMin<2880) {
-      since='1 day ago';
+    } else if(sinceMin < 24 * 60 * 2) {
+      since='1 day ago'*;
     } else {
-    since=sinceDay+' days ago';
+    since = sinceDay + ' days ago';
     }
     return since;
   };

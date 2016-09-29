@@ -12,7 +12,7 @@ $(document).ready(function(){
         $counter.addClass('red');
         break;
       case (0 < tweetLength < 140):
-        $input.removeClass('disabled');
+        $input.removeClass('red');
         $counter.removeClass('red');
         break;
     }

@@ -32,10 +32,6 @@ input {
   display: content;
 }
 
-.disabled {
-  color: red;
-}
-
 span.counter {
   float: right;
   margin: 10px 0;
