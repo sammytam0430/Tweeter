@@ -53,7 +53,9 @@ $(document).ready(function(){
           $("#new-tweet").find(".counter").html('140');
           $('#tweet-container').prepend(createTweetElement(tweet));
         }
-        error: console.error(err)
+        error: function(response) {
+          console.log("There was an error ", response.status);
+        }
       });
     }
   });
@@ -63,7 +65,9 @@ $(document).ready(function(){
       url: '/tweets',
       method: 'GET',
       success: renderTweets
-      error: console.error(err)
+      error: function(response) {
+        console.log("There was an error ", response.status);
+      }
     });
   }());
 
