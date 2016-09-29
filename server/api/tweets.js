@@ -22,7 +22,8 @@ module.exports = function(db) {
 
   tweets.post("/", function(req, res) {
     console.log("New Tweet, Body:", req.body);
-    if (!req.body.text) {
+    const text = req.body.text
+    if ((text.length > 140) || (text.length === 0) || text.match(/^\s+$/)) {
       res.status(400);
       return res.send("{'error': 'invalid request'}\n");
     }
