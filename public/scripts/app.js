@@ -81,15 +81,15 @@ $(document).ready(function(){
     var sinceDay = Math.round(sinceMin / 24 * 60);
     var since;
     if (sinceSec < 60) {
-      since='less than a minute ago';
+      since = 'less than a minute ago';
     } else if (sinceMin < 45) {
-      since=sinceMin+' minutes ago';
+      since = sinceMin+' minutes ago';
     } else if(sinceMin < 60) {
-      since='about 1 hour ago';
+      since = 'about 1 hour ago';
     } else if(sinceMin < 24 * 60) {
-      since='about '+sinceHr+' hours ago';
+      since = 'about ' + sinceHr + ' hours ago';
     } else if(sinceMin < 24 * 60 * 2) {
-      since='1 day ago'*;
+      since = '1 day ago';
     } else {
     since = sinceDay + ' days ago';
     }
