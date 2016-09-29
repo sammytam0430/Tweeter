@@ -34,12 +34,14 @@ $(document).ready(function(){
     e.preventDefault();
     const $this = $(this);
     const $counter = $this.find('.counter');
-
+    const $input = $this.find('.input');
     let content = $this.find('textarea').val();
     if (content.length > 140) {
       $counter.text('Your tweet is too long!');
+      $input.addClass('red');
     } else if (content === '' || content.match(/^\s+$/)) {
       $counter.addClass('red').text('Your tweet is empty!');
+      $input.addClass('red');
     } else {
       $.ajax({
         url: $this.attr('action'),
