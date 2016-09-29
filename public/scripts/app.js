@@ -20,7 +20,6 @@ $(document).ready(function(){
     let $footerIcons = $("<span>").appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
-
     return $tweet;
   }
 
@@ -33,18 +32,19 @@ $(document).ready(function(){
 
   $('#new-tweet').find('form').on('submit', function(e) {
     e.preventDefault();
-    let content = $(this).find('textarea').val();
+    const $this = $(this);
+    let content = $this.find('textarea').val();
     if (content.length > 140) {
-      $(this).find('input').addClass('disabled').disable;
-      $(this).find('.counter').text('Your tweet is too long!');
-    } else if (content === '') {
-      $(this).find('input').addClass('disabled').disable;
-      $(this).find('.counter').addClass('red').text('Your tweet is empty!');
+      $this.find('input').addClass('disabled').disable;
+      $this.find('.counter').text('Your tweet is too long!');
+    } else if (content === '' || content.match(/^\s+$/)) {
+      $this.find('input').addClass('disabled').disable;
+      $this.find('.counter').addClass('red').text('Your tweet is empty!');
     } else {
       $.ajax({
-        url: $(this).attr('action'),
-        method: $(this).attr('method'),
-        data: $(this).serialize(),
+        url: $this.attr('action'),
+        method: $this.attr('method'),
+        data: $this.serialize(),
         dataType: 'json',
         success: function (tweet) {
           $("#new-tweet").find('textarea').val('');
