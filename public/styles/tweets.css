@@ -13,10 +13,6 @@ header {
   border-top-right-radius: 5px;
 }
 
-.hover {
-  background-color: #000;
-}
-
 img {
   float: left;
   width: 60px;
@@ -72,3 +68,7 @@ span img {
   width: 30px;
   height: 30px;
 }
+
+.tweet footer .react { display: none; }
+.tweet:hover footer .react { display: block; }
+.tweet:hover header { background-color: black; }

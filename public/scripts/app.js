@@ -16,8 +16,8 @@ $(document).ready(function(){
 
     let today = Date.now();
     let daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
-    let $tweetFooter = $("<footer>").text(calculateSince(tweet));
-    let $footerIcons = $("<span>").appendTo($tweetFooter);
+    let $tweetFooter = $("<footer>").html('<p>' + calculateSince(tweet) + '</p>');
+  let $footerIcons = $("<span>").addClass('react').html('<img src="/images/like.png"><img src="/images/retweet.png"><img src="/images/flag.png">').appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
     return $tweet;
