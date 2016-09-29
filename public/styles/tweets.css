@@ -48,6 +48,7 @@ section.text {
   padding: 10px 10px;
   font-size: 150%;
   line-height: 150%;
+  overflow-wrap: break-word;
 }
 
 

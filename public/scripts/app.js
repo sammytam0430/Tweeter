@@ -33,13 +33,13 @@ $(document).ready(function(){
   $('#new-tweet').find('form').on('submit', function(e) {
     e.preventDefault();
     const $this = $(this);
+    const $counter = $this.find('.counter');
+
     let content = $this.find('textarea').val();
     if (content.length > 140) {
-      $this.find('input').addClass('disabled').disable;
-      $this.find('.counter').text('Your tweet is too long!');
+      $counter.text('Your tweet is too long!');
     } else if (content === '' || content.match(/^\s+$/)) {
-      $this.find('input').addClass('disabled').disable;
-      $this.find('.counter').addClass('red').text('Your tweet is empty!');
+      $counter.addClass('red').text('Your tweet is empty!');
     } else {
       $.ajax({
         url: $this.attr('action'),
