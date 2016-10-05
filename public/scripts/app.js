@@ -7,17 +7,17 @@
 $(document).ready(function(){
 
   function createTweetElement(tweet) {
-    const $tweet = $("<article>").addClass("tweet");
+    let $tweet = $("<article>").addClass("tweet");
 
-    const $tweetHeader = $("<header>").html('<img src="' + tweet.user.avatars.small + '"><h2>' + tweet.user.name + '</h2>');
-    const $tweetHandle = $("<span>").addClass("handle").text(tweet.user.handle).appendTo($tweetHeader);
+    let $tweetHeader = $("<header>").html('<img src="' + tweet.user.avatars.small + '"><h2>' + tweet.user.name + '</h2>');
+    let $tweetHandle = $("<span>").addClass("handle").text(tweet.user.handle).appendTo($tweetHeader);
 
-    const $tweetContent = $("<section>").addClass("text").text(tweet.content.text);
+    let $tweetContent = $("<section>").addClass("text").text(tweet.content.text);
 
-    const today = Date.now();
-    const daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
-    const $tweetFooter = $("<footer>").html('<p>' + calculateSince(tweet) + '</p>');
-    const $footerIcons = $("<span>").addClass('react').html('<img src="/images/like.png"><img src="/images/retweet.png"><img src="/images/flag.png">').appendTo($tweetFooter);
+    let today = Date.now();
+    let daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
+    let $tweetFooter = $("<footer>").html('<p>' + calculateSince(tweet) + '</p>');
+    let $footerIcons = $("<span>").addClass('react').html('<img src="/images/like.png"><img src="/images/retweet.png"><img src="/images/flag.png">').appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
     return $tweet;
@@ -25,17 +25,17 @@ $(document).ready(function(){
 
   function renderTweets(tweets) {
     tweets.forEach(function(tweetData) {
-      const $tweet = createTweetElement(tweetData);
+      let $tweet = createTweetElement(tweetData);
       $('#tweet-container').append($tweet);
     });
   }
 
   $('#new-tweet').find('form').on('submit', function(e) {
     e.preventDefault();
-    const $this = $(this);
-    const $counter = $this.find('.counter');
-    const $input = $this.find('input');
-    const content = $this.find('textarea').val();
+    let $this = $(this);
+    let $counter = $this.find('.counter');
+    let $input = $this.find('input');
+    let content = $this.find('textarea').val();
     if (content.length > 140) {
       $counter.text('Your tweet is too long!');
       $input.addClass('red');
@@ -73,13 +73,13 @@ $(document).ready(function(){
   });
 
   function calculateSince(tweet) {
-    const tTime = new Date(tweet.created_at);
-    const cTime = new Date() - 240000;
-    const sinceSec = Math.round((cTime - tTime) / 1000);
-    const sinceMin = Math.round(sinceSec / 60);
-    const sinceHr = Math.round(sinceMin / 60);
-    const sinceDay = Math.round(sinceHr / 24);
-    const since;
+    let tTime = new Date(tweet.created_at);
+    let cTime = new Date() - 240000;
+    let sinceSec = Math.round((cTime - tTime) / 1000);
+    let sinceMin = Math.round(sinceSec / 60);
+    let sinceHr = Math.round(sinceMin / 60);
+    let sinceDay = Math.round(sinceHr / 24);
+    let since;
     if (sinceSec < 60) {
       since = 'less than a minute ago';
     } else if (sinceMin < 45) {
