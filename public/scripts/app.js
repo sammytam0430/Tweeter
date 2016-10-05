@@ -73,22 +73,22 @@ $(document).ready(function(){
   });
 
   function calculateSince(tweet) {
-    var tTime = new Date(tweet.created_at);
-    var cTime = new Date() - 240000;
-    var sinceSec = Math.round((cTime - tTime) / 1000);
-    var sinceMin = Math.round((cTime - tTime) / 60000);
-    var sinceHr = Math.round(sinceMin / 60);
-    var sinceDay = Math.round(sinceMin / 24 * 60);
-    var since;
+    const tTime = new Date(tweet.created_at);
+    const cTime = new Date() - 240000;
+    const sinceSec = Math.round((cTime - tTime) / 1000);
+    const sinceMin = Math.round(sinceSec / 60);
+    const sinceHr = Math.round(sinceMin / 60);
+    const sinceDay = Math.round(sinceHr / 24);
+    const since;
     if (sinceSec < 60) {
       since = 'less than a minute ago';
     } else if (sinceMin < 45) {
       since = sinceMin+' minutes ago';
     } else if(sinceMin < 60) {
       since = 'about 1 hour ago';
-    } else if(sinceMin < 24 * 60) {
+    } else if(sinceHr < 24) {
       since = 'about ' + sinceHr + ' hours ago';
-    } else if(sinceMin < 24 * 60 * 2) {
+    } else if(sinceDay < 1) {
       since = '1 day ago';
     } else {
     since = sinceDay + ' days ago';
