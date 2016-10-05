@@ -7,17 +7,17 @@
 $(document).ready(function(){
 
   function createTweetElement(tweet) {
-    let $tweet = $("<article>").addClass("tweet");
+    const $tweet = $("<article>").addClass("tweet");
 
-    let $tweetHeader = $("<header>").html('<img src="' + tweet.user.avatars.small + '"><h2>' + tweet.user.name + '</h2>');
-    let $tweetHandle = $("<span>").addClass("handle").text(tweet.user.handle).appendTo($tweetHeader);
+    const $tweetHeader = $("<header>").html('<img src="' + tweet.user.avatars.small + '"><h2>' + tweet.user.name + '</h2>');
+    const $tweetHandle = $("<span>").addClass("handle").text(tweet.user.handle).appendTo($tweetHeader);
 
-    let $tweetContent = $("<section>").addClass("text").text(tweet.content.text);
+    const $tweetContent = $("<section>").addClass("text").text(tweet.content.text);
 
-    let today = Date.now();
-    let daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
-    let $tweetFooter = $("<footer>").html('<p>' + calculateSince(tweet) + '</p>');
-  let $footerIcons = $("<span>").addClass('react').html('<img src="/images/like.png"><img src="/images/retweet.png"><img src="/images/flag.png">').appendTo($tweetFooter);
+    const today = Date.now();
+    const daysAgo = Math.round((today - tweet.created_at) / (1000*60*60*24));
+    const $tweetFooter = $("<footer>").html('<p>' + calculateSince(tweet) + '</p>');
+    const $footerIcons = $("<span>").addClass('react').html('<img src="/images/like.png"><img src="/images/retweet.png"><img src="/images/flag.png">').appendTo($tweetFooter);
 
     $tweet.append($tweetHeader, $tweetContent, $tweetFooter);
     return $tweet;
@@ -25,7 +25,7 @@ $(document).ready(function(){
 
   function renderTweets(tweets) {
     tweets.forEach(function(tweetData) {
-      let $tweet = createTweetElement(tweetData);
+      const $tweet = createTweetElement(tweetData);
       $('#tweet-container').append($tweet);
     });
   }
@@ -35,7 +35,7 @@ $(document).ready(function(){
     const $this = $(this);
     const $counter = $this.find('.counter');
     const $input = $this.find('input');
-    let content = $this.find('textarea').val();
+    const content = $this.find('textarea').val();
     if (content.length > 140) {
       $counter.text('Your tweet is too long!');
       $input.addClass('red');

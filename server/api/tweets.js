@@ -16,10 +16,6 @@ module.exports = function(db) {
     });
   });
 
-  tweets.get('/test', function(req, res) {
-    res.send('hello world');
-  });
-
   tweets.post("/", function(req, res) {
     console.log("New Tweet, Body:", req.body);
     const text = req.body.text
